@@ -1,4 +1,4 @@
-package q01.s2;
+package q02.s1;
 
 
 public class ListNode {

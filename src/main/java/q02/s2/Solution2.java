@@ -1,4 +1,4 @@
-package q01.s2;
+package q02.s2;
 
 
 public class Solution2 {

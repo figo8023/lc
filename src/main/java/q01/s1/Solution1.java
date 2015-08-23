@@ -1,44 +1,27 @@
 package q01.s1;
 
 
-class Solution1 {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode c1 = l1;
-        ListNode c2 = l2;
-        ListNode sentinel = new ListNode(0);
-        ListNode d = sentinel;
-        int sum = 0;
-        while (c1 != null || c2 != null) {
-            sum /= 10;
-            if (c1 != null) {
-                sum += c1.val;
-                c1 = c1.next;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution1 {
+    public int[] twoSum(int[] numbers, int target) {
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < numbers.length; i++) {
+            int x = numbers[i];
+            if (map.containsKey(target - x)) {
+                return new int[] { map.get(target - x) + 1, i + 1 };
             }
-            if (c2 != null) {
-                sum += c2.val;
-                c2 = c2.next;
-            }
-            d.next = new ListNode(sum % 10);
-            d = d.next;
+            map.put(x, i);
         }
-        if (sum / 10 == 1)
-            d.next = new ListNode(1);
-        return sentinel.next;
+        throw new IllegalArgumentException("No two sum solution");
     }
 
     public static void main(String[] args){
+        int[] number = {2,5,3,6,7,9,4};
+        int target = 16;
         Solution1 solution = new Solution1();
-        ListNode l1 = new ListNode(2);
-        l1.next= new ListNode(3);
-        l1.next.next= new ListNode(6);
-        ListNode l2 = new ListNode(8);
-        l2.next = new ListNode(3);
-        l2.next.next = new ListNode(7);
-        ListNode s = solution.addTwoNumbers(l1, l2);
-        System.out.println(s);
-        int a =21;
-        int b =10;
-        System.out.println(a/b);
-        System.out.println(a%b);
+        int[] result = solution.twoSum(number, target);
+        System.out.println(result[0] + " + " + result[1]);
     }
 }
